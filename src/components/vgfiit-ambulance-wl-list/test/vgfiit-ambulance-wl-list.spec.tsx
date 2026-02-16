@@ -7,12 +7,10 @@ describe('vgfiit-ambulance-wl-list', () => {
       components: [VgfiitAmbulanceWlList],
       html: `<vgfiit-ambulance-wl-list></vgfiit-ambulance-wl-list>`,
     });
-    expect(page.root).toEqualHtml(`
-      <vgfiit-ambulance-wl-list>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </vgfiit-ambulance-wl-list>
-    `);
+    const wlList = page.rootInstance as VgfiitAmbulanceWlList;
+    const expectedPatients = wlList?.waitingPatients?.length
+
+    const items = page.root.shadowRoot.querySelectorAll("md-list-item");
+    expect(items.length).toEqual(expectedPatients);
   });
 });
