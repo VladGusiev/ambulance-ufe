@@ -53,12 +53,10 @@ export class VgfiitAmbulanceWlApp {
       <Host>
         { element === "editor"
         ? <vgfiit-ambulance-wl-editor entry-id={entryId}
-            onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
+            oneditor-closed={ () => navigate("./list")} >
           </vgfiit-ambulance-wl-editor>
-        : <vgfiit-ambulance-wl-list 
-          onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
-            
-          </vgfiit-ambulance-wl-list>
+        : <vgfiit-ambulance-wl-list
+          onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } ></vgfiit-ambulance-wl-list>
         }
 
       </Host>
