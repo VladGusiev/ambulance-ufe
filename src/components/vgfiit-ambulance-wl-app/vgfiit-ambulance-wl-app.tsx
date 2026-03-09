@@ -14,6 +14,9 @@ export class VgfiitAmbulanceWlApp {
 
   @Prop() basePath: string="";
 
+  @Prop() apiBase: string;
+  @Prop() ambulanceId: string;
+
   componentWillLoad() {
     const baseUri = new URL(this.basePath, document.baseURI || "/").pathname;
 
@@ -56,7 +59,10 @@ export class VgfiitAmbulanceWlApp {
             oneditor-closed={ () => navigate("./list")} >
           </vgfiit-ambulance-wl-editor>
         : <vgfiit-ambulance-wl-list
-          onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } ></vgfiit-ambulance-wl-list>
+          ambulance-id={this.ambulanceId} api-base={this.apiBase}
+          onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
+            
+          </vgfiit-ambulance-wl-list>
         }
 
       </Host>

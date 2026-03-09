@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface VgfiitAmbulanceWlApp {
+        "ambulanceId": string;
+        "apiBase": string;
         /**
           * @default ""
          */
@@ -16,6 +18,8 @@ export namespace Components {
         "entryId": string;
     }
     interface VgfiitAmbulanceWlList {
+        "ambulanceId": string;
+        "apiBase": string;
     }
 }
 export interface VgfiitAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
@@ -75,6 +79,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface VgfiitAmbulanceWlApp {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         /**
           * @default ""
          */
@@ -85,20 +91,28 @@ declare namespace LocalJSX {
         "onEditor-closed"?: (event: VgfiitAmbulanceWlEditorCustomEvent<string>) => void;
     }
     interface VgfiitAmbulanceWlList {
+        "ambulanceId"?: string;
+        "apiBase"?: string;
         "onEntry-clicked"?: (event: VgfiitAmbulanceWlListCustomEvent<string>) => void;
     }
 
     interface VgfiitAmbulanceWlAppAttributes {
         "basePath": string;
+        "apiBase": string;
+        "ambulanceId": string;
     }
     interface VgfiitAmbulanceWlEditorAttributes {
         "entryId": string;
+    }
+    interface VgfiitAmbulanceWlListAttributes {
+        "apiBase": string;
+        "ambulanceId": string;
     }
 
     interface IntrinsicElements {
         "vgfiit-ambulance-wl-app": Omit<VgfiitAmbulanceWlApp, keyof VgfiitAmbulanceWlAppAttributes> & { [K in keyof VgfiitAmbulanceWlApp & keyof VgfiitAmbulanceWlAppAttributes]?: VgfiitAmbulanceWlApp[K] } & { [K in keyof VgfiitAmbulanceWlApp & keyof VgfiitAmbulanceWlAppAttributes as `attr:${K}`]?: VgfiitAmbulanceWlAppAttributes[K] } & { [K in keyof VgfiitAmbulanceWlApp & keyof VgfiitAmbulanceWlAppAttributes as `prop:${K}`]?: VgfiitAmbulanceWlApp[K] };
         "vgfiit-ambulance-wl-editor": Omit<VgfiitAmbulanceWlEditor, keyof VgfiitAmbulanceWlEditorAttributes> & { [K in keyof VgfiitAmbulanceWlEditor & keyof VgfiitAmbulanceWlEditorAttributes]?: VgfiitAmbulanceWlEditor[K] } & { [K in keyof VgfiitAmbulanceWlEditor & keyof VgfiitAmbulanceWlEditorAttributes as `attr:${K}`]?: VgfiitAmbulanceWlEditorAttributes[K] } & { [K in keyof VgfiitAmbulanceWlEditor & keyof VgfiitAmbulanceWlEditorAttributes as `prop:${K}`]?: VgfiitAmbulanceWlEditor[K] };
-        "vgfiit-ambulance-wl-list": VgfiitAmbulanceWlList;
+        "vgfiit-ambulance-wl-list": Omit<VgfiitAmbulanceWlList, keyof VgfiitAmbulanceWlListAttributes> & { [K in keyof VgfiitAmbulanceWlList & keyof VgfiitAmbulanceWlListAttributes]?: VgfiitAmbulanceWlList[K] } & { [K in keyof VgfiitAmbulanceWlList & keyof VgfiitAmbulanceWlListAttributes as `attr:${K}`]?: VgfiitAmbulanceWlListAttributes[K] } & { [K in keyof VgfiitAmbulanceWlList & keyof VgfiitAmbulanceWlListAttributes as `prop:${K}`]?: VgfiitAmbulanceWlList[K] };
     }
 }
 export { LocalJSX as JSX };
