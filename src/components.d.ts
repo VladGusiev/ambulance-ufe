@@ -6,6 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface VgfiitAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath": string;
+    }
     interface VgfiitAmbulanceWlEditor {
         "entryId": string;
     }
@@ -16,7 +22,17 @@ export interface VgfiitAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLVgfiitAmbulanceWlEditorElement;
 }
+export interface VgfiitAmbulanceWlListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLVgfiitAmbulanceWlListElement;
+}
 declare global {
+    interface HTMLVgfiitAmbulanceWlAppElement extends Components.VgfiitAmbulanceWlApp, HTMLStencilElement {
+    }
+    var HTMLVgfiitAmbulanceWlAppElement: {
+        prototype: HTMLVgfiitAmbulanceWlAppElement;
+        new (): HTMLVgfiitAmbulanceWlAppElement;
+    };
     interface HTMLVgfiitAmbulanceWlEditorElementEventMap {
         "editor-closed": string;
     }
@@ -34,30 +50,53 @@ declare global {
         prototype: HTMLVgfiitAmbulanceWlEditorElement;
         new (): HTMLVgfiitAmbulanceWlEditorElement;
     };
+    interface HTMLVgfiitAmbulanceWlListElementEventMap {
+        "entry-clicked": string;
+    }
     interface HTMLVgfiitAmbulanceWlListElement extends Components.VgfiitAmbulanceWlList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLVgfiitAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLVgfiitAmbulanceWlListElement, ev: VgfiitAmbulanceWlListCustomEvent<HTMLVgfiitAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLVgfiitAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLVgfiitAmbulanceWlListElement, ev: VgfiitAmbulanceWlListCustomEvent<HTMLVgfiitAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLVgfiitAmbulanceWlListElement: {
         prototype: HTMLVgfiitAmbulanceWlListElement;
         new (): HTMLVgfiitAmbulanceWlListElement;
     };
     interface HTMLElementTagNameMap {
+        "vgfiit-ambulance-wl-app": HTMLVgfiitAmbulanceWlAppElement;
         "vgfiit-ambulance-wl-editor": HTMLVgfiitAmbulanceWlEditorElement;
         "vgfiit-ambulance-wl-list": HTMLVgfiitAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
+    interface VgfiitAmbulanceWlApp {
+        /**
+          * @default ""
+         */
+        "basePath"?: string;
+    }
     interface VgfiitAmbulanceWlEditor {
         "entryId"?: string;
         "onEditor-closed"?: (event: VgfiitAmbulanceWlEditorCustomEvent<string>) => void;
     }
     interface VgfiitAmbulanceWlList {
+        "onEntry-clicked"?: (event: VgfiitAmbulanceWlListCustomEvent<string>) => void;
     }
 
+    interface VgfiitAmbulanceWlAppAttributes {
+        "basePath": string;
+    }
     interface VgfiitAmbulanceWlEditorAttributes {
         "entryId": string;
     }
 
     interface IntrinsicElements {
+        "vgfiit-ambulance-wl-app": Omit<VgfiitAmbulanceWlApp, keyof VgfiitAmbulanceWlAppAttributes> & { [K in keyof VgfiitAmbulanceWlApp & keyof VgfiitAmbulanceWlAppAttributes]?: VgfiitAmbulanceWlApp[K] } & { [K in keyof VgfiitAmbulanceWlApp & keyof VgfiitAmbulanceWlAppAttributes as `attr:${K}`]?: VgfiitAmbulanceWlAppAttributes[K] } & { [K in keyof VgfiitAmbulanceWlApp & keyof VgfiitAmbulanceWlAppAttributes as `prop:${K}`]?: VgfiitAmbulanceWlApp[K] };
         "vgfiit-ambulance-wl-editor": Omit<VgfiitAmbulanceWlEditor, keyof VgfiitAmbulanceWlEditorAttributes> & { [K in keyof VgfiitAmbulanceWlEditor & keyof VgfiitAmbulanceWlEditorAttributes]?: VgfiitAmbulanceWlEditor[K] } & { [K in keyof VgfiitAmbulanceWlEditor & keyof VgfiitAmbulanceWlEditorAttributes as `attr:${K}`]?: VgfiitAmbulanceWlEditorAttributes[K] } & { [K in keyof VgfiitAmbulanceWlEditor & keyof VgfiitAmbulanceWlEditorAttributes as `prop:${K}`]?: VgfiitAmbulanceWlEditor[K] };
         "vgfiit-ambulance-wl-list": VgfiitAmbulanceWlList;
     }
@@ -66,6 +105,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "vgfiit-ambulance-wl-app": LocalJSX.IntrinsicElements["vgfiit-ambulance-wl-app"] & JSXBase.HTMLAttributes<HTMLVgfiitAmbulanceWlAppElement>;
             "vgfiit-ambulance-wl-editor": LocalJSX.IntrinsicElements["vgfiit-ambulance-wl-editor"] & JSXBase.HTMLAttributes<HTMLVgfiitAmbulanceWlEditorElement>;
             "vgfiit-ambulance-wl-list": LocalJSX.IntrinsicElements["vgfiit-ambulance-wl-list"] & JSXBase.HTMLAttributes<HTMLVgfiitAmbulanceWlListElement>;
         }

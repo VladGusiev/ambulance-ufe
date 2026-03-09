@@ -2,17 +2,17 @@ import { newSpecPage } from '@stencil/core/testing';
 import { VgfiitAmbulanceWlEditor } from '../vgfiit-ambulance-wl-editor';
 
 describe('vgfiit-ambulance-wl-editor', () => {
-  it('renders', async () => {
+  it('buttons shall be of different type', async () => {
     const page = await newSpecPage({
       components: [VgfiitAmbulanceWlEditor],
-      html: `<vgfiit-ambulance-wl-editor></vgfiit-ambulance-wl-editor>`,
+      html: `<vgfiit-ambulance-wl-editor entry-id="@new"></vgfiit-ambulance-wl-editor>`,
     });
-    expect(page.root).toEqualHtml(`
-      <vgfiit-ambulance-wl-editor>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </vgfiit-ambulance-wl-editor>
-    `);
+    let items: any = await page.root.shadowRoot.querySelectorAll("md-filled-button");
+    expect(items.length).toEqual(1);
+    items = await page.root.shadowRoot.querySelectorAll("md-outlined-button");
+    expect(items.length).toEqual(1);
+
+    items = await page.root.shadowRoot.querySelectorAll("md-filled-tonal-button");
+    expect(items.length).toEqual(1);
   });
 });
