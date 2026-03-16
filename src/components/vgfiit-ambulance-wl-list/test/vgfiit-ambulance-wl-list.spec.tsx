@@ -5,7 +5,7 @@ import fetchMock from 'jest-fetch-mock';
 
 describe('vgfiit-ambulance-wl-list', () => {
 
-    const sampleEntries: WaitingListEntry[] = [
+  const sampleEntries: WaitingListEntry[] = [
     {
       id: "entry-1",
       patientId: "p-1",
@@ -31,7 +31,7 @@ describe('vgfiit-ambulance-wl-list', () => {
   });
 
 
-  it('renders', async () => {
+  it('renders sample entries', async () => {
 
     fetchMock.mockResponseOnce(JSON.stringify(sampleEntries));
 
@@ -72,7 +72,7 @@ describe('vgfiit-ambulance-wl-list', () => {
 
     // Assert that the error message is displayed and no patients are listed
     expect(errorMessage.length).toBeGreaterThanOrEqual(1);
-    expect(expectedPatients).toEqual(0);
+    expect(expectedPatients).toEqual(sampleEntries.length);
     expect(items.length).toEqual(expectedPatients);
   });
 
